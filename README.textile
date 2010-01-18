@@ -1,0 +1,41 @@
+h2. Sprang
+
+Sprang is a small script that interacts with the "sprunge.us" command line,
+terminal "pastebin" web service.
+
+h3. Installing
+
+You can install Sprang using "easy_install":
+
+bc. sudo apt-get install python-setuptools
+sudo easy_install sprang
+
+h3. Getting Started
+
+You can post text to "sprunge.us" using Sprang in one of three ways:
+
+Via STDIN:
+
+bc. cat /etc/issue | sprang
+
+Using a command line argument:
+
+bc. sprang -t "This is my text"
+
+From a text file:
+
+bc. sprang -f /etc/issue
+
+If the post is successful, your code and URL will be displayed:
+
+bc. INFO: Code: cUGX
+INFO: URL: http://sprunge.us/cUGX
+ 
+You can either copy and paste the code or URL into an email or instant message,
+or you could just read out the code to your friend or co-worker.
+
+They can quickly receive the text someone has posted using this code:
+
+bc. sprang -g cUGX
+
+
