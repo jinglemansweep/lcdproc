@@ -1,3 +1,10 @@
 h2. LCDproc
 
-TODO: Write documentation
+h3. Installing
+
+bc. sudo apt-get install python-setuptools
+sudo easy_install lcdproc
+
+h3. Example Usage
+
+See *examples.py*
