@@ -5,23 +5,27 @@ import urllib
 
 from screen import Screen
 
+
 class Server(object):
     
+    """ LCDproc Server Object """
+    
     def __init__(self, hostname="localhost", port=13666, debug=False):
-        """
-        Constructor
-        """
+        
+        """ Constructor """
+        
         self.debug = debug
         self.hostname = hostname
         self.port = port
         self.tn = telnetlib.Telnet(self.hostname, self.port)
         self.server_info = dict()
         self.screens = dict()
+        
                 
     def start_session(self):
-        """
-        Start Session
-        """
+        
+        """ Start Session """
+        
         response = self.request("hello") 
         bits = response.split(" ")
         self.server_info.update({
@@ -33,11 +37,12 @@ class Server(object):
             "cell_height": int(bits[13])            
         })                
         return response  
+        
                 
     def request(self, command_string):
-        """
-        Request
-        """
+        
+        """ Request """
+        
         self.tn.write(command_string + "\n")
         if self.debug: print "Telnet Request:  %s" % (command_string)
         response = urllib.unquote(self.tn.read_until("\n"))
@@ -46,11 +51,12 @@ class Server(object):
 
 
     def add_screen(self, ref):     
+        
+        """ Add Screen """
+        
         if ref not in self.screens:   
-            response = self.request("screen_add %s" % (ref))
-            if "success" not in response: return None
-            screen = Screen(ref)
-            screen.server = self
+            screen = Screen(self, ref)
             screen.clear()
             self.screens[ref] = screen
             return self.screens[ref]
+        

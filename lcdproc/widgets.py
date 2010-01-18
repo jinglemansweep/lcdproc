@@ -2,6 +2,8 @@ import urllib
 
 class StringWidget(object):
 
+    """ String Widget """
+
     def __init__(self, screen, ref, x, y, text):
         
         self.screen = screen
@@ -13,20 +15,24 @@ class StringWidget(object):
         self.screen.server.request("widget_add %s %s %s" % (self.screen.ref, self.ref, "string"))
         self.update()
 
+    
     def update(self):
         
         self.screen.server.request('widget_set %s %s %s %s "%s"' % (self.screen.ref, self.ref, self.x, self.y, self.text))
 
+    
     def set_x(self, x):
         
         self.x = x
         self.update()
                                    
+    
     def set_y(self, y):
         
         self.y = y
         self.update()
         
+    
     def set_text(self, text):
         
         self.text = text
@@ -34,6 +40,8 @@ class StringWidget(object):
         
         
 class TitleWidget(object):
+    
+    """ Title Widget """
     
     def __init__(self, screen, ref, text):
         
