@@ -84,6 +84,12 @@ class Server(object):
             self.screens[ref] = screen
             return self.screens[ref]
      
+
+    def del_screen(self, ref):
+        """ Delete/Remove Screen """
+        self.request("screen_del %s" % (ref))
+        del(self.screens[ref])
+
         
     def add_key(self, ref, mode = "shared"):
         """
