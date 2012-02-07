@@ -4,7 +4,7 @@ import os
 from setuptools import setup, find_packages
 setup(
     name = "lcdproc",
-    version = "0.02",
+    version = "0.03",
     author = "JingleManSweep",
     author_email = "jinglemansweep@gmail.com",
     description = "Python OOP Wrapper Library for LCDproc Telnet API",
