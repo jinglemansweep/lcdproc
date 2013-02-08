@@ -1,7 +1,12 @@
 #import ez_setup, os
 #ez_setup.use_setuptools()
-import os
+import os, sys
 from setuptools import setup, find_packages
+
+extra = {}
+if sys.version_info >= (3,):
+    extra['use_2to3'] = True
+
 setup(
     name = "lcdproc",
     version = "0.03",
@@ -11,5 +16,6 @@ setup(
     url = "http://github.com/jingleman/lcdproc",
     packages = find_packages(),
     scripts = [],
-    include_package_data = True
+    include_package_data = True,
+    **extra
 )
