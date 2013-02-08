@@ -49,7 +49,7 @@ class Server(object):
             if "success" in response:   # Normal successful reply
                 break
             if "huh" in response:       # Something went wrong
-                break 
+                break
             if "connect" in response:   # Special reply to "hello"
                 break
             # TODO Keep track of which screen is displayed
