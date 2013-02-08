@@ -42,10 +42,10 @@ class Server(object):
         
         """ Request """
         
-        self.tn.write(command_string + "\n")
+        self.tn.write((command_string + "\n").encode())
         if self.debug: print "Telnet Request:  %s" % (command_string)
         while True:
-            response = urllib.unquote(self.tn.read_until("\n"))
+            response = urllib.unquote(self.tn.read_until(b"\n").decode())
             if "success" in response:   # Normal successful reply
                 break
             if "huh" in response:       # Something went wrong
@@ -66,7 +66,7 @@ class Server(object):
         LCDd generates strings for key presses, menu events & screen visibility changes.
         """
         if select.select([self.tn], [], [], 0) == ([self.tn], [], []):
-            response = urllib.unquote(self.tn.read_until("\n"))
+            response = urllib.unquote(self.tn.read_until(b"\n").decode())
             if self.debug: print "Telnet Poll: %s" % (response[:-1])
             # TODO Keep track of which screen is displayed
             return response
@@ -132,7 +132,7 @@ class Server(object):
         
         Return None or LCDd response on error
         """
-        response = self.request("output %s" % (value))
+        response = self.request(("output %s" % (value)).encode())
         if "success" in response:
             return None
         else:

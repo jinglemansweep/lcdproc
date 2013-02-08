@@ -2,8 +2,17 @@ h2. LCDproc
 
 h3. Installing
 
+h4. Python 2:
+
 bc. sudo apt-get install python-setuptools
 sudo easy_install lcdproc
+
+h4. Python 3:
+
+bc. sudo apt-get install python3-setuptools
+sudo easy_install3 lcdproc
+
+Alternatively, you could use pip to install the package instead of easy_install.
 
 h3. Example Usage
 
