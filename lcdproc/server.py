@@ -137,3 +137,15 @@ class Server(object):
             return None
         else:
             return response
+
+    def get_server_info(self):
+        """
+        Returns information of the server and the connected LCD:
+            "server_version": bits[2]
+            "protocol_version": bits[4]
+            "screen_width": int(bits[7])
+            "screen_height": int(bits[9])
+            "cell_width": int(bits[11])
+            "cell_height": int(bits[13])            
+        """
+        return self.server_info
