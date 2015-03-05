@@ -137,3 +137,14 @@ class Server(object):
             return None
         else:
             return response
+
+    def get_server_info(self):
+        """
+        Returns information about the server and the connected
+        LCD as a dictionary with the following keys:
+
+            "server_version", "protocol_version",
+            "screen_width", "screen_height",
+            "cell_width", "cell_height"
+        """
+        return self.server_info
